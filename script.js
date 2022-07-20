@@ -133,6 +133,50 @@ function generatePassword() {
   var minimumUpperCases = "";
   var minimumSpecialCharacters = "";
 
-  
+  // Generate each element from Arrays
+  var functionArray = {
+    getNumbers: function () {
+      return numbersArr[Math.floor(Math.random() * numbersArr.length)];
+    },
+
+    getLowerCases: function () {
+      return lowerCaseArr[Math.floor(Math.random() * lowerCaseArr.length)];
+    },
+
+    getUpperCases: function () {
+      return upperCaseArr[Math.floor(Math.random() * upperCaseArr.length)];
+    },
+
+    getSpecialCharacters: function () {
+      return specialArr[Math.floor(Math.random() * specialArr.length)];
+    },
+  };
+
+  // Chooses which array to draw from based on user input
+
+  if (numbers === true) {
+    minimumNumbers = functionArray.getNumbers();
+    chosenChar = chosenChar.concat(numbersArr);
+    minimumCount++;
+  }
+
+  if (lowerCases === true) {
+    minimumLowerCases = functionArray.getLowerCases();
+    chosenChar = chosenChar.concat(lowerCaseArr);
+    minimumCount++;
+  }
+
+  if (upperCases === true) {
+    minimumUpperCases = functionArray.getUpperCases();
+    chosenChar = chosenChar.concat(upperCaseArr);
+    minimumCount++;
+  }
+
+  if (special === true) {
+    minimumSpecialCharacters = functionArray.getSpecialCharacters();
+    chosenChar = chosenChar.concat(specialArr);
+    minimumCount++;
+  }
+
 // Add event listener to generate button
 //generateBtn.addEventListener("click", writePassword);
