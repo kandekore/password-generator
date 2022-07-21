@@ -22,7 +22,7 @@ function generatePassword() {
   );
   if (passwordLength < 8 || passwordLength > 128) {
     alert(
-      "Please pick a number between 8 and 128 - Refresh the page and try again"
+      "Please pick a number between 8 and 128. Please try again"
     );
     return null;
   }
