@@ -7,7 +7,6 @@
 - [Description](#description)
 - [Features](#features)
 - [How to Use](#how-to-use)
-- [Screenshots](#screenshots)
 - [Development](#development)
 - [Getting Started](#getting-started)
 - [License](#license)
@@ -34,10 +33,6 @@ The Password Generator is a web application that allows users to generate secure
 4. Next, a series of confirmations will appear, asking if you want to include numbers, lowercase letters, uppercase letters, and special characters in your password. Select "OK" for the character types you wish to include and "Cancel" for those you want to exclude.
 5. After making your selections, the password generator will create a random and secure password based on your preferences.
 6. The generated password will be displayed in the text area on the screen. You can copy the password to your clipboard by clicking the "Copy to Clipboard" button.
-
-## Screenshots
-
-![Password Generator](password-generator-screenshot.png)
 
 ## Development
 
