@@ -15,105 +15,44 @@ function writePassword() {
 
   passwordText.value = password;
 }
+
 // Prompts and Validation
 function generatePassword() {
   var passwordLength = prompt(
-    "Please enter the number of characters you want for you new password.  It must be more than 8 but less than 128."
+    "Please enter the number of characters you want for your new password. It must be between 8 and 128 characters."
   );
-  if (passwordLength < 8 || passwordLength > 128) {
-    alert(
-      "Please pick a number between 8 and 128. Please try again"
-    );
+
+  // Validate password length
+  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
+    alert("Invalid input! Password length must be between 8 and 128.");
     return null;
   }
 
-  var numbers = confirm("Do you want to use numbers in your password?");
-
-  var lowerCases = confirm("Do you want to use lowercases in your password?");
-
-  var upperCases = confirm("Do you want to use uppercases in your password?");
-
-  var special = confirm(
-    "Do you want to use special characters in your password?"
-  );
+  var numbers = confirm("Do you want to include numbers in your password?");
+  var lowerCases = confirm("Do you want to include lowercase letters in your password?");
+  var upperCases = confirm("Do you want to include uppercase letters in your password?");
+  var special = confirm("Do you want to include special characters in your password?");
 
   if (!numbers && !lowerCases && !upperCases && !special) {
-    alert("Please pick criteria - Refresh the page and try again");
+    alert("You must select at least one character type. Please try again.");
     return null;
   }
 
-  // Minimum count for numbers, lowerCases, upperCases & specialCharacters
-  var minimumCount = 0;
+  // Create a pool of characters based on user preferences
   var chosenChar = [];
+  if (numbers) chosenChar = chosenChar.concat(numbersArr);
+  if (lowerCases) chosenChar = chosenChar.concat(lowerCaseArr);
+  if (upperCases) chosenChar = chosenChar.concat(upperCaseArr);
+  if (special) chosenChar = chosenChar.concat(specialArr);
 
-  // Empty minimums for numbers, lowerCases, upperCases & specialCharacters
-
-  var minimumNumbers = "";
-  var minimumLowerCases = "";
-  var minimumUpperCases = "";
-  var minimumSpecialCharacters = "";
-
-  // Generate each element from Arrays
-  var functionArray = {
-    getNumbers: function () {
-      return numbersArr[Math.floor(Math.random() * numbersArr.length)];
-    },
-
-    getLowerCases: function () {
-      return lowerCaseArr[Math.floor(Math.random() * lowerCaseArr.length)];
-    },
-
-    getUpperCases: function () {
-      return upperCaseArr[Math.floor(Math.random() * upperCaseArr.length)];
-    },
-
-    getSpecialCharacters: function () {
-      return specialArr[Math.floor(Math.random() * specialArr.length)];
-    },
-  };
-
-  // Chooses which array to draw from based on user input
-
-  if (numbers === true) {
-    minimumNumbers = functionArray.getNumbers();
-    chosenChar = chosenChar.concat(numbersArr);
-    minimumCount++;
-  }
-
-  if (lowerCases === true) {
-    minimumLowerCases = functionArray.getLowerCases();
-    chosenChar = chosenChar.concat(lowerCaseArr);
-    minimumCount++;
-  }
-
-  if (upperCases === true) {
-    minimumUpperCases = functionArray.getUpperCases();
-    chosenChar = chosenChar.concat(upperCaseArr);
-    minimumCount++;
-  }
-
-  if (special === true) {
-    minimumSpecialCharacters = functionArray.getSpecialCharacters();
-    chosenChar = chosenChar.concat(specialArr);
-    minimumCount++;
-  }
-  // empty string variable for the for loop below
   var randomPasswordGenerated = "";
 
-  // loop getting random characters
-  for (let i = 0; i < parseInt(passwordLength) - minimumCount; i++) {
-    var randomIndex = Math.floor(Math.random() * 4);
+  // Generate the random password using characters from the chosenChar array
+  for (let i = 0; i < passwordLength; i++) {
+    var randomIndex = Math.floor(Math.random() * chosenChar.length);
     var randomCharPicked = chosenChar[randomIndex];
-    console.log(randomCharPicked);
     randomPasswordGenerated += randomCharPicked;
   }
 
-  // to make sure characters are added to the password
-  randomPasswordGenerated += minimumNumbers;
-  randomPasswordGenerated += minimumLowerCases;
-  randomPasswordGenerated += minimumUpperCases;
-  randomPasswordGenerated += minimumSpecialCharacters;
-
   return randomPasswordGenerated;
 }
-
