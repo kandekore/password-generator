@@ -1,7 +1,5 @@
 # Password Generator
 
-![Password Generator](password-generator-screenshot.png)
-
 ## Table of Contents
 
 - [Description](#description)
