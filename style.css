@@ -14,7 +14,7 @@ body,
 
 body {
   font-family: sans-serif;
-  background-color: #f9fbfd;
+  background-color: #003366;
 }
 
 .wrapper {
@@ -134,4 +134,7 @@ button[disabled] {
   .btn {
     font-size: 0.8rem;
   }
+}
+h1 {
+    color: white;
 }
